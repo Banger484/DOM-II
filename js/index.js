@@ -12,7 +12,7 @@
 // * `drag / drop`
 // * `copy` x
 // * `auxclick` x
-
+const mainHeader = document.querySelector('.main-navigation')
 const links = document.querySelectorAll('nav a');
 const bus = document.querySelector('.container img');
 const body = document.querySelector('body');
@@ -21,7 +21,16 @@ console.log(body)
 console.log(links);
 console.log(bus);
 
+function blackBack2(event){
+    mainHeader.style.backgroundColor = 'black';
+}
+mainHeader.addEventListener('click', blackBack2)
 
+function blackBack(event){
+    links[3].style.backgroundColor = 'black';
+    event.stopPropagation();
+}
+links[3].addEventListener('click', blackBack)
 
 function big(event) {
     links[0].style.fontSize = '5rem';   
@@ -86,6 +95,4 @@ links.forEach(event => {
     event.preventDefault();
 })
 
-links[3].addEventListener('click', () => {
-    body.style.backgroundColor = 'black';
-})
+
