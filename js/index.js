@@ -1,20 +1,22 @@
 /* eslint-disable no-unused-vars */
 // Your code goes here
-// * `mouseover`
-// * `keydown`
-// * `wheel`
-// * `load`
+// * `mouseover` x
+// * `keydown` x
+// * `wheel` x
+// * `load` x
 // * `focus`
-// * `resize`
-// * `scroll`
-// * `select`
-// * `dblclick`
+// * `resize` x
+// * `scroll` x
+// * `select` x
+// * `dblclick` x
 // * `drag / drop`
+// * `copy` x
+// * `auxclick` x
 
 const links = document.querySelectorAll('nav a');
 const bus = document.querySelector('.container img');
-const heading = document.querySelector('.logo-heading');
-
+const body = document.querySelector('body');
+console.log(body)
 
 console.log(links);
 console.log(bus);
@@ -49,7 +51,41 @@ function round(event) {
 }
 document.addEventListener('keydown', round)
 
-function loading(event) {
-    heading.style.color = 'green';
+body.onload = function(event) {
+    console.log('Body is loaded!!!')
 }
-document.addEventListener('load', loading)
+
+function resizeRecolor() {
+  body.style.backgroundColor = 'coral';
+}
+
+window.addEventListener('resize', resizeRecolor);
+
+function scrollingColor() {
+    body.style.backgroundColor = 'CornflowerBlue'
+}
+document.addEventListener('scroll', scrollingColor)
+
+function wheelColor() {
+    body.style.backgroundColor = 'BlanchedAlmond';
+}
+document.addEventListener('wheel', wheelColor)
+
+function copyContent() {
+    console.log('You just copied off of me!')
+}
+document.addEventListener('copy', copyContent)
+
+document.addEventListener('selectstart', () => {
+    console.log('You have started selecting something...')
+})
+body.addEventListener('auxclick', () => {
+    body.style.backgroundColor = 'DarkOliveGreen';
+})
+links.forEach(event => {
+    event.preventDefault();
+})
+
+links[3].addEventListener('click', () => {
+    body.style.backgroundColor = 'black';
+})
